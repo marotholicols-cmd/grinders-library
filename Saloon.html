@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRINDERS LIBRARY 🇱🇸 - WHOLE WORLD</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#23272f;color:#fff;padding-bottom:92px}
+header{background:#e6ff00;color:#000;text-align:center;padding:18px 12px;position:sticky;top:0;z-index:20}
+header h1{font-size:28px}header p{font-size:11px;letter-spacing:2px;font-weight:bold}
+.sub{font-size:11px;color:#ccc;text-align:center;padding:8px}
+.search{padding:10px 14px}.search input{width:100%;padding:13px;border-radius:10px;border:none;background:#3a3f4a;color:#fff;font-size:15px;outline:none}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:0 14px 12px}.tabs button{white-space:nowrap;padding:9px 15px;border-radius:20px;border:0;background:#3a3f4a;color:#ddd;cursor:pointer}.tabs button.active{background:#e6ff00;color:#000;font-weight:bold}
+.ad{background:#e6ff00;color:#000;text-align:center;padding:9px;font-weight:bold;font-size:12px;margin:0 14px 12px;border-radius:10px}
+.card{background:#3a3f4a;border-radius:14px;padding:14px;margin:0 14px 12px;cursor:pointer}
+.emptyBox{background:#3a3f4a;border-radius:14px;padding:18px;margin:0 14px 12px;text-align:center}.emptyBox p{font-size:12px;color:#aaa;margin:6px 0 12px}
+.btn{width:100%;padding:13px;background:#e6ff00;border:none;border-radius:25px;font-weight:bold;font-size:15px;cursor:pointer;color:#000}
+.btn-dark{background:#23272f;color:#fff;border:1px solid #e6ff00}
+.bookCard{background:#fff;color:#000;border-radius:14px;overflow:hidden;margin:0 14px 12px;cursor:pointer}.bookCard img{width:100%;height:150px;object-fit:cover;background:#ddd}.bookCard-body{padding:12px}.bookCard-body h3{font-size:17px}.bookCard-body p{font-size:12px;color:#555;margin:3px 0}
+.badge{display:inline-block;background:#23272f;color:#fff;font-size:11px;padding:4px 8px;border-radius:10px}.rate{color:#b8860b;font-weight:bold;font-size:13px}
+.section{padding:4px 0 12px}.section h2{font-size:17px;padding:0 14px 10px}
+.form{background:#3a3f4a;border-radius:14px;padding:15px;margin:0 14px 12px}.form h3{margin-bottom:10px}.form input,.form select,.form textarea{width:100%;padding:12px;margin-bottom:10px;border:none;border-radius:10px;font-size:15px;background:#23272f;color:#fff}
+.detail{position:fixed;inset:0;background:#23272f;z-index:99;overflow-y:auto;padding:16px;display:none}.detail img{width:100%;height:240px;object-fit:cover;border-radius:14px}
+.close{position:absolute;top:12px;right:15px;background:#e6ff00;border:none;width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer;color:#000}
+.stars span{padding:6px 9px;background:#fff;color:#000;border-radius:8px;margin:2px;display:inline-block;cursor:pointer;font-weight:bold}
+.comment{background:#3a3f4a;padding:12px;border-radius:12px;margin-top:10px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#23272f;display:flex;justify-content:space-around;padding:12px 0;border-top:1px solid #444;z-index:20}.bottom button{background:none;border:none;color:#aaa;font-size:12px;cursor:pointer}.bottom button.active{color:#e6ff00;font-weight:bold}
+.hidden{display:none}.room{background:#3a3f4a;border-radius:12px;padding:14px;margin:0 14px 8px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+#loginGate{position:fixed;inset:0;background:#23272f;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
+.loginBox{background:#fff;color:#000;width:100%;max-width:400px;padding:24px;border-radius:20px;text-align:center;max-height:92vh;overflow-y:auto}.loginBox h1{font-size:30px}.loginBox h1 span{color:#a8b400}.loginBox p{color:#555;font-size:13px;margin:8px 0 14px}.loginBox label{font-size:12px;color:#666;text-align:left;display:block}.loginBox input{width:100%;padding:12px;margin:4px 0 10px;border:1px solid #ccc;border-radius:10px}
+.loginTabs{display:flex;gap:8px;margin-bottom:14px}.loginTabs button{flex:1;padding:10px;border-radius:20px;border:1px solid #000;background:#fff;font-weight:bold;cursor:pointer}.loginTabs button.active{background:#23272f;color:#fff}
+#status{font-size:11px;text-align:center;padding:4px;color:#e6ff00}
+</style>
+</head>
+<body>
+<div id="loginGate"><div class="loginBox"><h1>GRINDERS<br><span>LIBRARY</span> 🇱🇸</h1><p><b>THERAPY SESSIONS - WHOLE WORLD</b><br>Everyone reads. Books are FREE. No lock.</p><div class="loginTabs"><button id="tab-signup" class="active" onclick="switchAuth('signup')">Sign Up</button><button id="tab-login" onclick="switchAuth('login')">Login</button></div><div id="signupForm"><label>Real Name *</label><input id="suName" placeholder="e.g. Marotholi Kult"><label>Email *</label><input id="suEmail" placeholder="you@email.com"><label>Phone Number *</label><input id="suPhone" placeholder="e.g. 5000 0000"><label>Password *</label><input id="suPass" type="password" placeholder="Create password"><button class="btn" onclick="doSignup()">CREATE ACCOUNT →</button></div><div id="loginForm" class="hidden"><label>Email / Phone</label><input id="liUser" placeholder="Email or Phone"><label>Password</label><input id="liPass" type="password" placeholder="Password"><button class="btn" onclick="doLogin()">ENTER EMPIRE →</button></div><p id="authMsg" style="color:#cc0000;font-size:12px"></p></div></div>
+
+<header><h1>GRINDERS LIBRARY</h1><p>THERAPY SESSIONS - WHOLE WORLD</p></header>
+<p class="sub">🌍 GRINDERS LIBRARY • FREE • No Lock • Static on Netlify</p>
+<p id="status">📚 1 Book • FREE</p>
+<div class="ad">🔥 SUPPORT GRINDERS — Tip M5 to keep books FREE</div>
+<div class="search"><input id="searchInput" placeholder="Search books, authors..." oninput="render()"></div>
+<div class="tabs" id="shelfTabs"></div>
+
+<div id="page-home"><div class="section"><h2>🎵 Latest Books — From The World</h2><div id="latestBox"></div></div><div class="section"><h2>⭐ Top Rated</h2><div id="topList"></div></div><div class="section"><h2>📚 The 9 Rooms</h2><div id="shelfList"></div></div></div>
+<div id="page-library" class="hidden"><div class="section"><h2>📚 My Library — Tap to Open</h2><div id="myLib"></div></div><div class="section"><h2>📖 My Reading</h2><div id="readingList"></div></div></div>
+<div id="page-upload" class="hidden">
+<div class="form"><h3>⬆️ Upload — Paused</h3><p style="font-size:13px;color:#ccc;line-height:1.5">Library is now STATIC with 1 book: <b>clash by TAURENTH</b>.<br><br>New uploads are paused while we move DEW to Supabase. For new books, go to DEW / LES-POT.</p><button class="btn" onclick="uploadBook()">UPLOAD PAUSED — LEARN MORE</button></div>
+<div class="form"><h3>🎨 Upload Art — Paused</h3><p style="font-size:13px;color:#ccc">Art uploads paused for now.</p><button class="btn" onclick="uploadArt()">PUBLISH ART — PAUSED</button></div>
+</div>
+<div id="page-profile" class="hidden"><div class="form"><h3>👤 My Profile</h3><p id="profShow"></p><input id="profName" placeholder="Real Name"><input id="profEmail" placeholder="Email"><input id="profPhone" placeholder="Phone Number"><button class="btn" onclick="saveProfile()">SAVE PROFILE</button><button class="btn btn-dark" style="margin-top:8px" onclick="doLogout()">LOGOUT</button><p id="profMsg" style="font-size:12px;color:#e6ff00;margin-top:8px"></p></div><div class="section"><h2>⭐ My Feedback</h2><div id="myFeedback"></div></div></div>
+<div class="detail" id="detail"></div>
+<nav class="bottom"><button id="nav-home" class="active" onclick="showPage('home')">🔍<br>Discover</button><button id="nav-library" onclick="showPage('library')">📚<br>Library</button><button id="nav-upload" onclick="showPage('upload')">⬆️<br>Upload</button><button id="nav-profile" onclick="showPage('profile')">👤<br>Account</button></nav>
+
+<script>
+// LIBRARY STATIC - NO SUPABASE - GITHUB + NETLIFY ONLY
+let SHELVES=["All","Law","Meditation","Inspiration","Cooking Recipe","Life or Nature Tutor","Finance","Philosophy","Grind / Hustle","Lesotho / African"];
+let currentShelf="All", tempRate=0;
+let items=[
+  {id:1,title:"clash",author:"TAURENTH",shelf:"Law",lingo:"English",file_name:"clash.pdf",file_url:"./clash.pdf",file_size_kb:1,downloads:0,rates:[],cover:"https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600",description:"OWN COPYRIGHT REAL BOOK by TAURENTH — Therapy Sessions. FREE. No lock."}
+];
+let feedbacks=JSON.parse(localStorage.getItem("grinders_feedback")||"[]");
+let reading=JSON.parse(localStorage.getItem("grinders_reading")||"[]");
+function showData(kb){let d=(kb||1)+3000;return (d/1000).toFixed(1)+" MB data • "+(kb||1)+" KB storage";}
+function avg(r){if(!r||!r.length)return "New";return (r.reduce((a,b)=>a+b,0)/r.length).toFixed(1)+" / 10";}
+function findIdx(t){return items.findIndex(x=>x.title===t);}
+function switchAuth(m){document.getElementById("tab-signup").classList.toggle("active",m==="signup");document.getElementById("tab-login").classList.toggle("active",m==="login");document.getElementById("signupForm").classList.toggle("hidden",m!=="signup");document.getElementById("loginForm").classList.toggle("hidden",m!=="login");}
+async function doSignup(){
+  let n=document.getElementById("suName").value.trim(),e=document.getElementById("suEmail").value.trim().toLowerCase(),p=document.getElementById("suPhone").value.trim(),pw=document.getElementById("suPass").value;
+  if(!n||!e||!p||!pw){document.getElementById("authMsg").innerText="Fill all";return}
+  let user={real_name:n,email:e,phone:p,password:pw};
+  localStorage.setItem("grinders_current",JSON.stringify(user));checkLogin();
+}
+async function doLogin(){
+  let id=document.getElementById("liUser").value.trim().toLowerCase(),pw=document.getElementById("liPass").value;
+  let u=JSON.parse(localStorage.getItem("grinders_current")||"null");
+  if(!u||(u.email!==id&&u.phone!==id)||u.password!==pw){document.getElementById("authMsg").innerText="Wrong Email/Phone or Password. Sign up first.";return}
+  checkLogin();
+}
+function checkLogin(){let u=JSON.parse(localStorage.getItem("grinders_current")||"null");if(u){document.getElementById("loginGate").style.display="none";document.getElementById("profShow").innerHTML="<b>"+(u.real_name||"")+"</b><br>"+u.email+" • "+u.phone;document.getElementById("profName").value=u.real_name||"";document.getElementById("profEmail").value=u.email||"";document.getElementById("profPhone").value=u.phone||"";}else{document.getElementById("loginGate").style.display="flex";}}
+function doLogout(){localStorage.removeItem("grinders_current");checkLogin();}
+function saveProfile(){let u=JSON.parse(localStorage.getItem("grinders_current")||"null");if(!u)return;u.real_name=document.getElementById("profName").value;u.email=document.getElementById("profEmail").value;u.phone=document.getElementById("profPhone").value;localStorage.setItem("grinders_current",JSON.stringify(u));document.getElementById("profMsg").innerText="Saved locally.";checkLogin();}
+async function loadAll(){
+  document.getElementById("status").innerText="📚 "+items.length+" Book • FREE • Static on Netlify";
+  render();
+}
+function renderTabs(){document.getElementById("shelfTabs").innerHTML=SHELVES.map(s=>`<button class="${s===currentShelf?'active':''}" onclick="currentShelf='${s}';render()">${s}</button>`).join("");}
+function render(){
+  renderTabs();let q=(document.getElementById("searchInput").value||"").toLowerCase();
+  let filtered=items.filter(it=>{if(currentShelf!=="All"&&it.shelf!==currentShelf)return false;if(q&&!(it.title+" "+it.author).toLowerCase().includes(q))return false;return true;});
+  if(filtered.length===0){document.getElementById("latestBox").innerHTML=`<div class="emptyBox"><b>📚 No books in this room</b><p>Try All rooms.</p><button class="btn" onclick="currentShelf='All';render()">SHOW ALL</button></div>`;}
+  else{document.getElementById("latestBox").innerHTML=filtered.map(it=>{let idx=items.indexOf(it);return `<div class="bookCard" onclick="openDetail(${idx})"><img src="${it.cover}"><div class="bookCard-body"><h3>${it.title}</h3><p>by ${it.author} • ${it.shelf}</p><div><span class="badge">📚 BOOK • ${it.lingo} • FREE • WORLD</span></div><div class="rate">⭐ ${avg(it.rates)} • ⬇️ ${it.downloads||0} • 📦 ${showData(it.file_size_kb||1)}</div><p style="color:#0a7a00;font-weight:bold">📄 ${it.file_name} — Real PDF</p></div></div>`}).join("");}
+  let top=[...items].sort((a,b)=>(b.rates||[]).reduce((x,y)=>x+y,0)/((b.rates||[]).length||1)-(a.rates||[]).reduce((x,y)=>x+y,0)/((a.rates||[]).length||1)).slice(0,3);
+  document.getElementById("topList").innerHTML=top.length?top.map(it=>{let idx=items.indexOf(it);return `<div class="card" onclick="openDetail(${idx})"><b>${it.title}</b><br><small>${it.author} • ⭐ ${avg(it.rates)}</small></div>`}).join(""):`<div class="emptyBox"><p>No rated books yet.</p></div>`;
+  document.getElementById("shelfList").innerHTML=SHELVES.slice(1).map(s=>{let c=items.filter(x=>x.shelf===s).length;return `<div class="room" onclick="currentShelf='${s}';render();showPage('home');window.scrollTo(0,0)"><div><b>${s}</b><br><small>${c} books • Tap to open</small></div><div>→</div></div>`}).join("");
+  let lib=JSON.parse(localStorage.getItem("grinders_lib")||"[]");
+  document.getElementById("myLib").innerHTML=lib.length?lib.map(t=>{let idx=findIdx(t);if(idx===-1)return `<div class="card">📖 ${t}</div>`;let it=items[idx];return `<div class="bookCard" onclick="openDetail(${idx})"><img src="${it.cover}"><div class="bookCard-body"><h3>${it.title}</h3><p>by ${it.author}</p><p style="color:#0a7a00;font-weight:bold">👉 TAP TO OPEN</p></div></div>`}).join(""):`<div class="emptyBox"><b>Library empty</b><p>Download a FREE book — it saves here.</p></div>`;
+  document.getElementById("readingList").innerHTML=reading.map(r=>{let idx=findIdx(r.title);return `<div class="card" onclick="openDetail(${idx})"><b>${r.title}</b><br><small>Page ${r.page} • ${r.date}</small></div>`}).join("")||"<p>No reading yet.</p>";
+  document.getElementById("myFeedback").innerHTML=feedbacks.map(f=>`<div class="comment"><b>${f.title} — ${f.rate}/10</b><br>${f.comment}<br><small>${f.email}</small></div>`).join("")||"<p>No feedback yet.</p>";
+}
+function showPage(p){["home","library","upload","profile"].forEach(x=>{document.getElementById("page-"+x).classList.toggle("hidden",x!==p);document.getElementById("nav-"+x).classList.toggle("active",x===p)});window.scrollTo(0,0);}
+function openDetail(idx){let it=items[idx];let fb=feedbacks.filter(f=>f.title===it.title);document.getElementById("detail").style.display="block";document.getElementById("detail").innerHTML=`<button class="close" onclick="closeDetail()">✕</button><img src="${it.cover}"><h2 style="margin-top:12px">${it.title}</h2><p>by ${it.author} • ${it.shelf} • ${it.lingo}</p><p>⭐ <b>${avg(it.rates)}</b> • ⬇️ ${it.downloads||0} • 📦 ${showData(it.file_size_kb||1)} • <b>FREE • NO LOCK • WORLD</b></p><p>📄 ${it.file_name}</p><p>${it.description||""}</p><div style="background:#fff;color:#000;border-radius:14px;padding:12px;margin-top:12px"><button class="btn" style="background:#23272f;color:#fff" onclick="readRealPDF(${idx})">📖 READ REAL PDF →</button><br><br><button class="btn" onclick="downloadItem(${idx})">⬇️ DOWNLOAD FREE — REAL PDF</button><br><br><button class="btn" style="background:#23272f;color:#e6ff00" onclick="tip()">💛 TIP M5</button></div><div style="margin-top:14px"><b>⭐ Rate (1-10)</b><div class="stars">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<span onclick="setRate(${n})">${n}</span>`).join("")}</div><p id="rateLabel">Tap a number</p><input id="fbEmail" placeholder="Your Email" style="width:100%;padding:12px;border-radius:10px;border:none;margin-bottom:8px"><textarea id="fbComment" placeholder="Your comment..." style="width:100%;padding:12px;border-radius:10px;border:none"></textarea><button class="btn" onclick="sendFeedback(${idx})">SEND FEEDBACK</button></div><div style="margin-top:14px"><b>💬 Feedback</b>${fb.map(f=>`<div class="comment"><b>${f.email} — ${f.rate}/10</b><br>${f.comment}</div>`).join("")||"<p>No feedback yet.</p>"}</div>`;}
+function closeDetail(){document.getElementById("detail").style.display="none";}
+function setRate(n){tempRate=n;document.getElementById("rateLabel").innerText="You chose: "+n+" / 10";}
+async function sendFeedback(idx){let e=document.getElementById("fbEmail").value,c=document.getElementById("fbComment").value;if(!tempRate){alert("Pick rating first");return}let it=items[idx];it.rates=[...(it.rates||[]),tempRate];feedbacks.push({title:it.title,email:e||"anonymous",rate:tempRate,comment:c||"No comment"});localStorage.setItem("grinders_feedback",JSON.stringify(feedbacks));alert("Rating saved: "+tempRate+"/10");closeDetail();loadAll();}
+function readRealPDF(idx){let it=items[idx];if(it.file_url){window.open(it.file_url,"_blank");}else{alert("No PDF URL.");}reading.push({title:it.title,page:1,date:new Date().toLocaleDateString()});localStorage.setItem("grinders_reading",JSON.stringify(reading));render();}
+async function downloadItem(idx){let it=items[idx];it.downloads=(it.downloads||0)+1;let a=document.createElement("a");a.href=it.file_url;a.download=it.file_name||"book.pdf";a.target="_blank";document.body.appendChild(a);a.click();a.remove();let lib=JSON.parse(localStorage.getItem("grinders_lib")||"[]");if(!lib.includes(it.title))lib.push(it.title);localStorage.setItem("grinders_lib",JSON.stringify(lib));alert("Downloaded FREE: "+it.file_name);loadAll();}
+function tip(){alert("Thank you! 💛 Tip M5 via M-Pesa to support Grinders.");}
+async function uploadBook(){alert("Uploads PAUSED. Library is now static with 1 book - clash. New uploads will come via DEW / LES-POT.");}
+async function uploadArt(){alert("Art uploads paused - Library is static now.");}
+loadAll();checkLogin();
+</script>
+</body>
+</html>
